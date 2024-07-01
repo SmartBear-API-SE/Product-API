@@ -24,23 +24,13 @@ jobs:
       - name: Generate Swagger file
         run: npm run swagger  # Adjust this to your Swagger file generation command
 
-      - name: Debug Environment Variables
-        run: |
-         echo "SwaggerHub Owner: ${{ secrets.SWAGGERHUB_OWNER }}"
-         echo "SwaggerHub API: ${{ secrets.SWAGGERHUB_API }}"
-         echo "Swagger file path: docs/swagger.json"
-         ls -l docs/swagger.json  # To check if the file exists
-
       - name: Upload Swagger to SwaggerHub
-        env:
-          SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_API_KEY }}
-          SWAGGERHUB_OWNER: ${{ secrets.SWAGGERHUB_OWNER }}
-          SWAGGERHUB_API: ${{ secrets.SWAGGERHUB_API }}
+      
         run: |
           SWAGGER_FILE=docs/swagger.json
           if [ -f "$SWAGGER_FILE" ]; then
-            curl -X POST "https://api.swaggerhub.com/apis/${{ env.SWAGGERHUB_OWNER }}/${{ env.SWAGGERHUB_API }}" \
-            -H "Authorization: ${{ env.SWAGGERHUB_API_KEY }}" \
+            curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-api" \
+            -H "Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97" \
             -H "Content-Type: application/json" \
             --data-binary @$SWAGGER_FILE
           else
