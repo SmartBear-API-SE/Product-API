@@ -26,8 +26,8 @@ jobs:
 
       - name: Debug Environment Variables
         run: |
-         echo "SwaggerHub Owner: ${{ env.SWAGGERHUB_OWNER }}"
-         echo "SwaggerHub API: ${{ env.SWAGGERHUB_API }}"
+         echo "SwaggerHub Owner: ${{ secrets.SWAGGERHUB_OWNER }}"
+         echo "SwaggerHub API: ${{ secrets.SWAGGERHUB_API }}"
          echo "Swagger file path: docs/swagger.json"
          ls -l docs/swagger.json  # To check if the file exists
 
