@@ -30,7 +30,7 @@ jobs:
           SWAGGERHUB_OWNER: ${{ secrets.SWAGGERHUB_OWNER }}
           SWAGGERHUB_API: ${{ secrets.SWAGGERHUB_API }}
         run: |
-          swaggerhub api:update ${{ env.SWAGGERHUB_OWNER }}/${{ env.SWAGGERHUB_API }} \
-          --version 1.0.0 \
-          --file product-api/docs/swagger.json \
-          --oauth-token ${{ env.SWAGGERHUB_API_KEY }}
+          curl -X POST "https://api.swaggerhub.com/apis/${{ env.SWAGGERHUB_OWNER }}/${{ env.SWAGGERHUB_API }}" \
+          -H "Authorization: ${{ env.SWAGGERHUB_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          --data-binary @docs/swagger.json
