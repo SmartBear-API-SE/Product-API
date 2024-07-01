@@ -8,6 +8,7 @@ router.get("/product/:id", controller.getById, () => {
 
 router.get("/products", controller.getAll, () => {
     // #swagger.tags = ["Products"]
+    // #swagger.description = "Retrieve All products"
 });
 
 module.exports = router;
