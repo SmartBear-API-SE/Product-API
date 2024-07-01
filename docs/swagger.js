@@ -20,5 +20,6 @@ const generateSwagger = require("swagger-autogen")();
   const swaggerFile= "./docs/swagger.json";
   const apiRouteFile= ["./product/product.routes.js"];
   generateSwagger(swaggerFile, apiRouteFile, swaggerDocument).then(() =>{
-    require('../server')
+    console.log('Swagger documentation generated successfully');
+    process.exit();
   });

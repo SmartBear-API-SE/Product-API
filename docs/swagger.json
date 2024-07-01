@@ -27,7 +27,7 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "description": "Retieve products by ID",
         "parameters": [
           {
             "name": "id",
@@ -51,12 +51,22 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "description": "Retrieve All products",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "descritpion": "Limit the number of products displayed",
+            "required": false,
+            "type": "number"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "autoQuery": false
       }
     }
   }
