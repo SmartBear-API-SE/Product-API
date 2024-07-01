@@ -1,0 +1,36 @@
+name: Publish Swagger to SwaggerHub
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  publish-swagger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Adjust based on your project's Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Adjust this if you're using a different package manager
+
+      - name: Generate Swagger file
+        run: npm run swagger  # Adjust this to your Swagger file generation command
+
+      - name: Upload Swagger to SwaggerHub
+        env:
+          SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_API_KEY }}
+          SWAGGERHUB_OWNER: ${{ secrets.SWAGGERHUB_OWNER }}
+          SWAGGERHUB_API: ${{ secrets.SWAGGERHUB_API }}
+        run: |
+          swaggerhub api:update ${{ env.SWAGGERHUB_OWNER }}/${{ env.SWAGGERHUB_API }} \
+          --version 1.0.0 \
+          --file product-api/docs/swagger.json \
+          --oauth-token ${{ env.SWAGGERHUB_API_KEY }}
