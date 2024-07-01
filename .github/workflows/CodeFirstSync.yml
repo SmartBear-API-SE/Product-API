@@ -28,13 +28,9 @@ jobs:
       
         run: |
           SWAGGER_FILE=docs/swagger.json
-          if [ -f "$SWAGGER_FILE" ]; then
-            curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-api" \
-            -H "Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97" \
-            -H "Content-Type: application/json" \
-            --data-binary @$SWAGGER_FILE
-          else
-            echo "Swagger file not found: $SWAGGER_FILE
-            exit 1
-          fi
+          curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-api" \
+          -H "Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97" \
+          -H "Content-Type: application/json" \
+          --data-binary @$SWAGGER_FILE
+         
       
