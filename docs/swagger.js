@@ -1,4 +1,10 @@
-const generateSwagger = require("swagger-autogen")();
+const options = {
+  openapi: "3.0.0"
+}
+
+const generateSwagger = require("swagger-autogen")(options);
+
+
   
   const swaggerDocument = {
     info: {

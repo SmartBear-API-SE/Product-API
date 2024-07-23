@@ -28,7 +28,7 @@ jobs:
       
         run: |
           SWAGGER_FILE=docs/swagger.json
-          curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-api" \
+          curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-apis" \
           -H "Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97" \
           -H "Content-Type: application/json" \
           --data-binary @$SWAGGER_FILE
