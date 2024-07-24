@@ -23,6 +23,12 @@ router.get("/products", controller.getAll, () => {
             required: false,
             type: 'number'
         }
+        #swagger.parameter['searchString'] = {
+            in: 'query',
+            description: 'Search',
+            required: false,
+            type: 'number
+        }
     */
 });
 

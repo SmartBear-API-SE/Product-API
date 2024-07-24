@@ -8,7 +8,7 @@ const generateSwagger = require("swagger-autogen")(options);
   
   const swaggerDocument = {
     info: {
-      version: "1.0.0",
+      version: "1.0.0-oas3",
       title: "Product Apis",
       description: "API for Managing products",
       contact: {
