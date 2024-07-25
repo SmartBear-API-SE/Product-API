@@ -13,8 +13,8 @@ router.get("/products", controller.getAll, () => {
         #swagger.description = "Retrieve All products"
         #swagger.parameters['limit'] = {
             in:'query',
-            descritpion: 'Limit the number of products displayed',
-            required: true,
+            descritpion: 'Limit the number of products that will be displayed!!!!!!',
+            required: false,
             type: 'number'
         } 
         #swagger.parameters['skip'] = {
