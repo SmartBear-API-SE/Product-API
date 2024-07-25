@@ -29,7 +29,7 @@ jobs:
         with:
           file-path: docs/swagger.json
           commit-msg: Update Swagger docs file
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.SH_TOKEN }}
 
       - name: Upload Swagger to SwaggerHub
         run: |
