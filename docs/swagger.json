@@ -52,7 +52,7 @@
           {
             "name": "limit",
             "in": "query",
-            "descritpion": "Limit the number of products displayed",
+            "descritpion": "Limit the number of products that will be displayed!!!!!!",
             "required": false,
             "schema": {
               "type": "number"
