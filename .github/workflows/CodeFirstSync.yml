@@ -24,8 +24,14 @@ jobs:
       - name: Generate Swagger file
         run: npm run swagger  # Adjust this to your Swagger file generation command
 
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: docs/swagger.json
+          commit-msg: Update Swagger docs file
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload Swagger to SwaggerHub
-      
         run: |
           SWAGGER_FILE=docs/swagger.json
           curl -X POST "https://api.swaggerhub.com/apis/NicksDemoOrg/product-apis" \
