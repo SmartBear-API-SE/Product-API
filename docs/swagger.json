@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
     "version": "1.0.0-oas3",
     "title": "Product Apis",
@@ -9,12 +9,18 @@
       "email": "TestUser@gmail.com"
     }
   },
-  "servers": [
-    {
-      "url": "http://localhost:5000/"
-    }
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": [
+    "http"
   ],
   "securityDefinitions": {},
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/product/{id}": {
       "get": {
@@ -27,8 +33,46 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "type": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "version": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -38,11 +82,36 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/products": {
+    "/product": {
       "get": {
         "tags": [
           "Products"
@@ -54,26 +123,56 @@
             "in": "query",
             "descritpion": "Limit the number of products that will be displayed!!!!!!",
             "required": false,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           },
           {
             "name": "skip",
             "in": "query",
             "descritpion": "Skip the number of products displayed",
             "required": false,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "autoQuery": false
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "version": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   }

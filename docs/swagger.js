@@ -24,7 +24,7 @@ const options = {
   };
   const swaggerFile= "./docs/swagger.json";
   const apiRouteFile= ["./product/product.routes.js"];
-  swaggerAutogen(swaggerFile, apiRouteFile, swaggerDocument,options).then(() =>{
+  swaggerAutogen(swaggerFile, apiRouteFile, swaggerDocument).then(() =>{
     console.log('Swagger documentation generated successfully');
     process.exit();
   });
