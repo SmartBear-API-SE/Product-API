@@ -13,11 +13,8 @@ mongoose.connect(process.env.MONGOURL)
     .then(db => console.log(`Connected to Mongo - ${db.connections[0].name}`))
     .catch(err => console.error("Cannot connect to database", err));
 
-const init = () => {
-    app.use(cors);
+
+    app.use(cors());
     app.use(router);
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-    return app.listen(port, () => console.log(`Provider API listening on port ${port}...`));
-};
-
-init();
+    app.listen(port, () => console.log(`Provider API listening on port ${port}...`));
