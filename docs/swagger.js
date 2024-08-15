@@ -1,9 +1,8 @@
+import swaggerAutogen from "swagger-autogen";
+
 const options = {
   openapi: "3.0.0"
 }
-
-const generateSwagger = require("swagger-autogen")(options);
-
 
   
   const swaggerDocument = {
@@ -25,7 +24,7 @@ const generateSwagger = require("swagger-autogen")(options);
   };
   const swaggerFile= "./docs/swagger.json";
   const apiRouteFile= ["./product/product.routes.js"];
-  generateSwagger(swaggerFile, apiRouteFile, swaggerDocument).then(() =>{
+  swaggerAutogen(swaggerFile, apiRouteFile, swaggerDocument,options).then(() =>{
     console.log('Swagger documentation generated successfully');
     process.exit();
   });
