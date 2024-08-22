@@ -1,12 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import router from './product/product.routes.js';
+import productRouter from './product/product.routes.js';
+import manufacturerRouter from './manufactuer/manufactor.routes.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './docs/swagger.json' assert {type: 'json'}
 import mongoose from "mongoose";
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGOURL)
@@ -15,6 +16,8 @@ mongoose.connect(process.env.MONGOURL)
 
 
     app.use(cors());
-    app.use(router);
+    app.use(express.json())
+    app.use(productRouter);
+    app.use(manufacturerRouter)
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
     app.listen(port, () => console.log(`Provider API listening on port ${port}...`));

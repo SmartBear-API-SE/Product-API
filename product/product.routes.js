@@ -1,14 +1,14 @@
 import express from 'express';
-const router = express.Router();
+const productRouter = express.Router();
 import * as productController from '../product/product.controller.js'
 
-router.get("/product/:id", productController.getProductById, () => {
+productRouter.get("/product/:id", productController.getProductById, () => {
     // #swagger.tags = ["Products"]
     // #swagger.description = "Retieve products by ID"
 });
 
 
-router.get("/product", productController.getAllProducts, () => {
+productRouter.get("/product", productController.getAllProducts, () => {
     /* 
         #swagger.autoQuery = false
         #swagger.tags = ["Products"]
@@ -34,8 +34,8 @@ router.get("/product", productController.getAllProducts, () => {
     */
 });
 
-router.post('/product', productController.createProduct);
-router.put('/product/:id', productController.updateProduct);
-router.delete('/product/:id', productController.deleteProduct);
+productRouter.post('/product', productController.createProduct);
+productRouter.put('/product/:id', productController.updateProduct);
+productRouter.delete('/product/:id', productController.deleteProduct);
 
-export default router
+export default productRouter
