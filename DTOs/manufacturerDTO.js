@@ -1,14 +1,11 @@
 import { model, Schema } from "mongoose";
+import AddressSchema from "./AddressDTO.js";
 
 const Manufacturer = new Schema({
-    name: {
-        type: String
-    },
-    homePage: {
-        type: String
-    },
-    phone: {
-        type: String
+    name: String,
+    phone: String, 
+    address: {
+        type: AddressSchema
     }
 });
 
