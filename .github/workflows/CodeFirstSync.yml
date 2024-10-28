@@ -38,5 +38,8 @@ jobs:
           -H "Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97" \
           -H "Content-Type: application/json" \
           --data-binary @$SWAGGER_FILE
-         
+
+      # - name: Run test suite through test engine
+      #   run: |
+      #     testengine -c .\testengine.conf run project tags=pet,user output=C:\Work\Reports environment=dev C:\Work\ready-api-project.xml
       
