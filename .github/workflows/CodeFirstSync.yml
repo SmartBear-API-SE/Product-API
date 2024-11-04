@@ -39,6 +39,12 @@ jobs:
           -H "Content-Type: application/json" \
           --data-binary @$SWAGGER_FILE
 
+      - name: Check for standardization errors
+        run: |
+          curl -X 'GET' 'https://api.swaggerhub.com/apis/NicksDemoOrg/PayrollAPI/1.0.0/standardization' \
+          -H 'accept: application/json' \
+          -H 'Authorization: febe3f85-8bab-4c99-856d-31fbc9e80a97'
+
       # - name: Run test suite through test engine
       #   run: |
       #     testengine -c .\testengine.conf run project tags=pet,user output=C:\Work\Reports environment=dev C:\Work\ready-api-project.xml
