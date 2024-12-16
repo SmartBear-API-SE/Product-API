@@ -135,7 +135,8 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "x-mock-dynamic": false
           },
           "500": {
             "description": "Internal Server Error"
